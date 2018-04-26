@@ -10,7 +10,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 //@RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/java/acceptanceTests/features"} , format = {"json:target/cucumber.json","html:target/site/cucumber-pretty"},
-        glue = "Steps")
+    glue = "acceptanceTests.Steps")
 public class TestRunner extends AbstractTestNGCucumberTests{
 
 }

@@ -59,13 +59,11 @@ class VetController {
     }
 
     @GetMapping(value = "/vets.json", produces = "application/json")
-    public @ResponseBody String showResourceJSONVetList() {
+    public @ResponseBody Vets showResourceJSONVetList() {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for JSon/Object mapping
         Vets vets = new Vets();
         vets.getVetList().addAll(this.vets.findAll());
-        JSONObject jsonObject = new JSONObject(vets);
-        String myJson = jsonObject.toString();
-        return myJson;
+        return vets;
     }
 }

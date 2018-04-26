@@ -2,8 +2,6 @@ package acceptanceTests.Steps;
 
 import acceptanceTests.Base.BaseUtil;
 import acceptanceTests.pages.OwnersPage;
-import acceptanceTests.pages.VeterinariansPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
