@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.vet;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,8 +49,8 @@ class VetController {
         return "vets/vetList";
     }
 
-    @GetMapping({ "/vets.json", "/vets.xml" })
-    public @ResponseBody Vets showResourcesVetList() {
+    @GetMapping({"/vets.xml" })
+    public @ResponseBody Vets showResourceXMLVetList() {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for JSon/Object mapping
         Vets vets = new Vets();
@@ -57,4 +58,14 @@ class VetController {
         return vets;
     }
 
+    @GetMapping(value = "/vets.json", produces = "application/json")
+    public @ResponseBody String showResourceJSONVetList() {
+        // Here we are returning an object of type 'Vets' rather than a collection of Vet
+        // objects so it is simpler for JSon/Object mapping
+        Vets vets = new Vets();
+        vets.getVetList().addAll(this.vets.findAll());
+        JSONObject jsonObject = new JSONObject(vets);
+        String myJson = jsonObject.toString();
+        return myJson;
+    }
 }
