@@ -9,7 +9,7 @@
     <h2>Owner Information</h2>
   
   
-    <table class="table table-striped" th:object="${owner}">
+    <table class="table table-striped" th:object="${owner}" id="owner-info">
       <tr>
         <th>Name</th>
         <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
@@ -28,9 +28,9 @@
       </tr>
     </table>
   
-    <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit
+    <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default" name="editOwner">Edit
       Owner</a>
-    <a th:href="@{{id}/pets/new(id=${owner.id})}" class="btn btn-default">Add
+    <a th:href="@{{id}/pets/new(id=${owner.id})}" class="btn btn-default" name="addPet">Add
       New Pet</a>
   
     <br />
@@ -38,7 +38,7 @@
     <br />
     <h2>Pets and Visits</h2>
   
-    <table class="table table-striped">
+    <table class="table table-striped" id="owner-pets">
   
       <tr th:each="pet : ${owner.pets}">
         <td valign="top">
@@ -66,10 +66,10 @@
             </tr>
             <tr>
               <td><a
-                th:href="@{{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}">Edit
+                th:href="@{{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}" name="editPet">Edit
                   Pet</a></td>
               <td><a
-                th:href="@{{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}">Add
+                th:href="@{{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}" name="addVisit">Add
                   Visit</a></td>
             </tr>
           </table>

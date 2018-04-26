@@ -44,4 +44,16 @@ public class OwnersSteps {
         System.out.println(lastName);
         this.page.insertLastName(lastName);
     }
+
+    @Then("^I should see the owner details info$")
+    public void iShouldSeeTheOwnerDetailsInfo() throws Throwable {
+        Assert.assertTrue(base.Driver.findElement(By.id("owner-info")).isDisplayed());
+    }
+
+    @Then("^I should see a warning message with the message \"([^\"]*)\"$")
+    public void iShouldSeeAWarningMessageWithTheMessage(String message) throws Throwable {
+        Assert.assertTrue(base.Driver.findElement(By.id("errors")).findElement(By.xpath("//div[@class='alert alert-warning']/p")).getText().equals(message));
+    }
+
+
 }
